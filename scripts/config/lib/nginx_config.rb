@@ -45,7 +45,7 @@ class NginxConfig
     json["global_headers"] ||= {}
     json["global_headers"].each do |key, val|
       evaled_value = NginxConfigUtil.interpolate(val, ENV)
-      json["global_headers"][loc][key] = evaled_value
+      json["global_headers"][key] = evaled_value
     end
 
     json["clean_urls"] ||= DEFAULT[:clean_urls]
