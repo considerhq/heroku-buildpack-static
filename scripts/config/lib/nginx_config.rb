@@ -44,7 +44,7 @@ class NginxConfig
 
     json["global_headers"] ||= {}
     json["global_headers"].each do |key, val|
-      evaled_value = NginxConfigUtil.interpolate(value, ENV)
+      evaled_value = NginxConfigUtil.interpolate(val, ENV)
       json["global_headers"][loc][key] = evaled_value
     end
 
