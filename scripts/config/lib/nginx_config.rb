@@ -42,6 +42,12 @@ class NginxConfig
       index += 1
     end
 
+    json["global_headers"] ||= {}
+    json["global_headers"].each do |key, val|
+      evaled_value = NginxConfigUtil.interpolate(value, ENV)
+      json["global_headers"][loc][key] = evaled_value
+    end
+
     json["clean_urls"] ||= DEFAULT[:clean_urls]
     json["https_only"] ||= DEFAULT[:https_only]
 
